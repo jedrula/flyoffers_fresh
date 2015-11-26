@@ -1,0 +1,38 @@
+{{#each post.legs as |leg|}}
+	<div>
+	<div class="cos-sm-12">
+		<span>
+    		{{leg.departure_date}}
+		</span>
+		<span>
+    		{{leg.departure_marker.name}}
+		</span>
+		<span class="from-to-separator">-></span>
+		<span>
+    		{{leg.arrival_marker.name}}
+		</span>
+	</div>
+	</div>
+{{/each}}
+	<div>
+		<span>
+		{{#if post.price}}
+			{{post.price}}
+			<span>
+			{{#if post.currency}}
+				{{post.currency}}
+			{{else}}
+				[{{t 'currency_unknown'}}]
+			{{/if}}
+			</span>
+		{{else}}
+			{{t 'price_unknown'}}
+		{{/if}}
+		</span>
+	</div>
+
+	{{#if post.desc}}
+			<pre>{{post.desc}}</pre>
+	{{else}}
+			<div>{{t 'description_missing'}}</div>
+	{{/if}}

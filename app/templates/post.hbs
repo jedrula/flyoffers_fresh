@@ -1,0 +1,37 @@
+<h1><a target="_blank" href={{model.href}}>{{model.title}}</a></h1>
+{{post-header post=model}}
+
+<div class="row">
+	<div class="photo col-md-6">
+		{{fotopreview-with-noimage cloudinaryPublicId=cloudinaryPublicId width=600 height=400}}
+	</div>
+
+	<div class="col-md-6">
+		{{#if model.validMarkers.length}}
+			<span><!--
+			{{google-map markers=model.validMarkers gopt_draggable=false autoFitBounds="markers"}} -->
+			{{#g-map shouldFit=true as |context|}}
+			{{#each model.legs as |leg index|}}
+				{{g-map-marker context lat=leg.departure_marker.lat lng=leg.departure_marker.lng}}
+				{{g-map-marker context lat=leg.arrival_marker.lat lng=leg.arrival_marker.lng}}
+			{{/each}}
+			{{/g-map}}
+			</span>
+		{{/if}}
+	</div>
+</div>
+
+{{post-data post=model}}
+
+
+<!-- {{#if user.admin}} 
+	<button {{action 'edit' this}} type="button" class="btn btn-warning">{{t 'edit'}}</button>
+ {{/if}} -->
+{{#link-to "edit" model}}{{t 'edit'}} {{model.title}}{{/link-to}}
+
+{{comment-list comments=model.comments}}
+{{#if isAuthenticated}}
+	{{new-comment container=model comment=model.newcomment action="persistNewComment"}}
+{{else}}
+	{{t 'authenticated_only' action=(t 'add_comment')}}
+{{/if}}

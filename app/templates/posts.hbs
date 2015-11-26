@@ -1,0 +1,13 @@
+<div class="container-fluid">
+{{#each model as |post|}}
+	<div class="row postlistingview">
+		{{listing-view post=post}}
+	</div>	
+{{else}}
+	{{t 'no_posts'}}
+{{/each}}
+{{#if user.admin}}
+	{{confirm-button title=(t "remove_all") action="removeAll"}}
+{{/if}}
+
+</div>

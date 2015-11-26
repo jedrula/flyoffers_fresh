@@ -1,0 +1,27 @@
+@import "compass";
+@import "bootstrap";
+@import "typeahead";
+
+.ember-application{
+	padding: 20px;
+}
+
+.g-map-canvas {
+  width: 600px;
+  height: 400px;
+}
+
+.postlistingview .g-map-canvas {
+  width: 220px;
+  height: 60px;
+}
+
+a.comments{
+	color: #d24e44;
+}
+
+.foto-preview-no-image{
+	max-width: 100%;
+	background: url('/assets/noimage.jpg') left center no-repeat;
+	background-size: 100% auto;
+}

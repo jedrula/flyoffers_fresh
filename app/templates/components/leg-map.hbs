@@ -1,0 +1,6 @@
+{{#g-map shouldFit=true as |context|}}
+{{#each legs as |leg index|}}
+	{{g-map-marker context lat=leg.departure_marker.lat lng=leg.departure_marker.lng}}
+	{{g-map-marker context lat=leg.arrival_marker.lat lng=leg.arrival_marker.lng}}
+{{/each}}
+{{/g-map}}

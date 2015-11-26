@@ -1,0 +1,27 @@
+.twitter-typeahead .tt-query,
+.twitter-typeahead .tt-hint {
+  margin-bottom: 0;
+}
+
+.tt-menu {
+  @extend .dropdown-menu;
+}
+
+.tt-suggestion {
+  display: block;
+  padding: 3px 20px;
+  p {
+	  margin: 0;
+  }
+}
+.tt-suggestion.tt-cursor,.tt-suggestion:hover {
+  color: $dropdown-link-active-color;
+  background-color: $dropdown-link-active-bg;
+}
+
+.twitter-typeahead {
+  width: 100%;
+  input {
+    border: none;
+  }
+}

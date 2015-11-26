@@ -1,0 +1,7 @@
+<div class="meta-info">
+	<small>{{mongo-id-to-date post}}</small>
+	<span class="separator">|</span>
+	<small>{{if post.author post.author (t "anonymous")}}</small>
+	<span class="separator">|</span>
+	<a class="comments" href="#/" {{action "goToPostSection" post "#comments"}}> <small>{{t 'comments'}}: {{post.comments.length}}</small></a>
+</div>

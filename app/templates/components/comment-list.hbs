@@ -1,0 +1,7 @@
+<h1 id="comments">{{t 'comments'}}</h1>
+<ul>
+{{#each comments as |comment|}}
+	<li>{{comment.body}} <small> {{t 'by'}} {{comment.username}}</small></li>
+{{/each}}
+</ul>
+{{outlet}}

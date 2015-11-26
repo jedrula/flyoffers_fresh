@@ -1,0 +1,18 @@
+<div class="col-sm-3 col-xs-12 postlistingview-image-wrapper">
+	{{#link-to "post" post}}{{fotopreview-with-noimage cloudinaryPublicId=cloudinaryPublicId width=300 height=200}}{{/link-to}}
+</div>
+<div class="col-sm-6 col-xs-12">
+	{{post-header post=post}}
+	<h4>{{#link-to "post" post}}{{post.title}}{{/link-to}}</h4>
+	{{post-data post=post}}
+</div>
+<div class="col-sm-3 col-xs-12" style="position: relative;">
+	{{#if post.validMarkers.length}}
+				<span>
+				<!--
+				{{google-map markers=validMarkers gopt_draggable=false autoFitBounds="markers"}}
+				-->
+				{{leg-map legs=post.legs}}
+				</span>
+	{{/if}}
+</div>
