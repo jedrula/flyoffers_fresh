@@ -20,7 +20,10 @@ module.exports = function(defaults) {
    // }
   });
 
-  app.import('bower_components/bootstrap-sass/assets/javascripts/bootstrap.js');
+  app.import('bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js');
+  app.import('bower_components/bootstrap-sass/assets/javascripts/bootstrap.js');//TODO use min version?
+  //im not sure if that might even help: 
+
 
   app.import('bower_components/typeahead.js/dist/typeahead.bundle.min.js');
 
