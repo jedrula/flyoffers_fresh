@@ -2,6 +2,12 @@
 
 module.exports = function(environment) {
   var ENV = {
+    contentSecurityPolicy: {
+      'img-src': "'self' mt1.googleapis.com",
+      'script-src': "'self' 'unsafe-inline' 'unsafe-eval' maps.googleapis.com",
+      'style-src': "'self' 'unsafe-inline'"
+    },
+
     modulePrefix: 'flyoffers-fresh',
     environment: environment,
     baseURL: '/',
@@ -10,12 +16,19 @@ module.exports = function(environment) {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
         // e.g. 'with-controller': true
+        'ember-htmlbars-attribute-syntax': true,
+        'ember-htmlbars-inline-if-helper': true,
+        'ember-htmlbars-component-generation': true
       }
     },
 
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+      API_SERVER_URL: 'http://localhost:3000',
+    },
+    i18n: { 
+      defaultLocale: 'pl' 
     }
   };
 
@@ -40,7 +53,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV.APP.API_SERVER_URL = 'http://backend-flyoffers.rhcloud.com';
   }
 
   return ENV;

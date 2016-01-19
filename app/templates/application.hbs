@@ -1,3 +1,37 @@
-<h2 id="title">Welcome to Ember</h2>
+<nav class="navbar navbar-default" role="navigation">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">{{appName}}</a>
+			</div>
 
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li>{{#link-to 'posts'}}{{t 'posts'}}{{/link-to}}</li>
+					<!-- if user.admin /if -->
+					<li>{{#link-to 'unverified'}}{{t 'unverified'}}{{/link-to}}</li>
+					
+					<li>{{#link-to 'about'}}{{t 'about'}}{{/link-to}}</li>
+					<li>{{#link-to 'users.index'}}{{t 'users'}}{{/link-to}}</li>
+					{{#if isLoggedIn}}
+      						<li>{{#link-to 'logout'}}{{t 'logout'}} <small>({{user.local.email}})</small>{{/link-to}}</li>	
+    					{{else}}
+						<li>{{#link-to 'login'}}{{t 'login'}}{{/link-to}}</li>
+						<li>{{#link-to 'signup'}}{{t 'signup'}}{{/link-to}}</li>
+					{{/if}}
+					<li>{{#link-to 'new'}}{{t 'newoffer'}}{{/link-to}}</li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+</nav>
 {{outlet}}

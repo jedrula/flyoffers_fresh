@@ -2,9 +2,27 @@
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function(defaults) {
+  // var app = new EmberApp(defaults, {
+  //   // Add options here
+  //   'ember-bootstrap': {
+  //       'importBootstrapTheme': true
+  //   }
+  // });
+
   var app = new EmberApp(defaults, {
-    // Add options here
+   compassOptions: {
+       importPath: [
+         'bower_components/bootstrap-sass/assets/stylesheets'
+       ]
+   },
+   // emberCliFontAwesome: {
+   //    useScss: true
+   // }
   });
+
+  app.import('bower_components/bootstrap-sass/assets/javascripts/bootstrap.js');
+
+  app.import('bower_components/typeahead.js/dist/typeahead.bundle.min.js');
 
   // Use `app.import` to add additional libraries to the generated
   // output files.
