@@ -1,0 +1,81 @@
+<form class="form-horizontal" role="form">
+	<!--
+	{{partial "postformfields"}}
+	-->
+
+<div class="form-group">
+	<label class="sr-only">{{t 'title'}}</label>
+	<div class="col-md-6">
+		{{input placeholder=(t 'title') type="text" value=post.title class="form-control"}}
+	</div>
+</div>
+
+<div class="form-group">
+	<label class="sr-only">{{t 'source_href'}}</label>	
+	<div class="col-md-6">
+		{{input placeholder=(t "source_href") type="text" value=post.href class="form-control"}}
+	</div>
+</div>
+{{#each post.legs as |leg index|}}
+    <div class="form-group">
+		<label class="sr-only">marker</label>
+		<div class="col-md-3">
+			{{airport-autocomplete placeholder="airport name" content=airports markers=attrs.markers marker=leg.departure_marker class="form-control" typeheadselected=(action 'markerchange' leg "departure_marker")}} 
+		</div>
+		<div class="col-md-2">
+			{{bootstrap-datepicker value=leg.departure_date placeholder=(t "departure") class="form-control" autoclose=true}}
+		</div>
+		<div class="col-md-3">
+			{{airport-autocomplete placeholder="airport name" content=airports markers=attrs.markers marker=leg.arrival_marker class="form-control" typeheadselected=(action 'markerchange' leg "arrival_marker")}}
+		</div>
+		<div class="col-md-2">
+			{{bootstrap-datepicker value=leg.arrival_date placeholder=(t "arrival") class="form-control" autoclose=true}}
+		</div>
+		<div class="col-md-1">
+			<button {{action 'removeLeg' leg index}} type="button" class="form-control btn btn-danger">{{t 'remove'}}</button>
+		</div> 
+	</div>
+{{/each}}
+<div class="form-group">
+	<div class="col-md-4">
+		<button {{action 'setupNewLeg'}} type="button" class="btn btn-success">{{t 'add_leg'}}</button>
+	</div>
+</div>
+
+<div class="form-group">
+	<div class="col-md-4">
+		<label class="sr-only">{{t 'price'}}</label>		
+		{{input placeholder=(t "price") type="text" value=post.price class="form-control"}}
+	</div>
+	<div class="col-md-2">
+		<label class="sr-only">{{t 'currency'}}</label>
+		{{input placeholder="$" type="text" value=post.currency class="form-control"}}
+	</div>
+</div>
+
+<div class="form-group">
+	<label class="sr-only">{{t 'description'}}</label>	
+	<div class="col-md-6">
+		{{textarea placeholder=(t "description") value=post.desc class="form-control" rows="6"}}
+	</div>
+</div>
+
+<!-- http://stackoverflow.com/questions/1944267/how-to-change-the-button-text-of-input-type-file TODO translate choose file -->
+<div class="form-group">
+<div class="col-md-6">
+	{{upload-file file=image  fileToUpload=post.imageToUpload}}
+	{{fotopreview-with-noimage image=image cloudinaryPublicId=cloudinaryPublicId height="400" width="600"}}
+	{{google-image selectedImage="grabSelectedImage" }}
+</div>
+</div>
+
+
+	<input {{action 'submitform'}} type="submit" class="btn btn-success" value={{t "save"}}>
+	<!-- update and notify  i think we should determine it on the server side -->
+	<!-- remove should probably be moved elsewhere 			
+		<button {{action 'remove' this}} type="button" class="btn btn-danger">{{t 'remove'}}</button>
+	-->
+	
+	<button {{action attrs.cancel}} type="button" class="btn btn-danger">{{t 'cancel'}}</button>
+	
+</form>
