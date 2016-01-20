@@ -9,6 +9,18 @@ module.exports = function(defaults) {
   //   }
   // });
 
+  
+
+  //console.log('defaults',defaults);
+  //TODO  a workaround - for some reason on windows this is not the name of the main css file by default but app.css is
+  //name should be under project.Project.pkg.name - or sth like that
+  //var pkgName = defaults.project.pkg.name;
+  // defaults = defaults || {};
+  // defaults.outputPaths = defaults.outputPaths || {};
+  // defaults.outputPaths.app = defaults.outputPaths.app || {};
+  // defaults.outputPaths.app.css = defaults.outputPaths.css || '/assets/app.css';
+  //defaults.outputPaths.app.css = defaults.outputPaths.css || '/assets/' + pkgName + '.css';
+  
   var app = new EmberApp(defaults, {
    compassOptions: {
        importPath: [

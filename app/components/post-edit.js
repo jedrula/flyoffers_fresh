@@ -23,6 +23,9 @@ export default Ember.GlimmerComponent.extend({
 		 //    });
 			return true;// alert('xxx');
 		},
+		cancel(){
+			this.attrs['cancel']();
+		},
 		setupNewLeg(){
 			console.log('kegsss',this.attrs.post.legs);
 			var newLeg = {
